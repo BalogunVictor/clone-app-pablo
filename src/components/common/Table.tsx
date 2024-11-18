@@ -1,13 +1,13 @@
-import { Fragment, ReactNode } from 'react';
 import {
   flexRender,
   Row,
   RowData,
   Table as ReactTable,
-} from '@tanstack/react-table';
-import Image from 'next/image';
+} from "@tanstack/react-table";
+import Image from "next/image";
+import { Fragment, ReactNode } from "react";
 
-import { BodyText } from './Text';
+import { BodyText } from "./Text";
 
 type TableProps<T extends RowData> = {
   table: ReactTable<T>;
@@ -16,48 +16,52 @@ type TableProps<T extends RowData> = {
   renderSubComponent?: (props: { row: Row<T> }) => React.ReactElement;
 };
 
-export const TableLoading = ({ colSpan }: { colSpan: number }) => (
-  <>
-    {[1, 2, 3, 4, 5].map((val) => (
-      <Fragment key={val}>
-        <tr className="bg-white">
-          <td
-            className="text-brand-textBlack w-max max-w-full px-4 py-6 text-left text-sm"
-            colSpan={colSpan}
-          />
-        </tr>
-        <tr className="bg-gray-50">
-          <td
-            className="text-brand-textBlack w-max max-w-full px-4 py-6 text-left text-sm"
-            colSpan={colSpan}
-          />
-        </tr>
-      </Fragment>
-    ))}
-  </>
-);
+export function TableLoading({ colSpan }: { colSpan: number }) {
+  return (
+    <>
+      {[1, 2, 3, 4, 5].map((val) => (
+        <Fragment key={val}>
+          <tr className="bg-white">
+            <td
+              className="text-brand-textBlack w-max max-w-full px-4 py-6 text-left text-sm"
+              colSpan={colSpan}
+            />
+          </tr>
+          <tr className="bg-gray-50">
+            <td
+              className="text-brand-textBlack w-max max-w-full px-4 py-6 text-left text-sm"
+              colSpan={colSpan}
+            />
+          </tr>
+        </Fragment>
+      ))}
+    </>
+  );
+}
 
-export const EmptyTableState = ({ message }: { message?: string }) => (
-  <div className="flex flex-col py-20 sm:py-44">
-    <Image
-      alt="image empty states"
-      className="mx-auto h-32 w-32"
-      height={32}
-      src="/empty.svg"
-      width={32}
-    />
-    <BodyText className="mt-3 text-center text-sm text-brand-orange-800">
-      {message || 'No data available'}.
-    </BodyText>
-  </div>
-);
+export function EmptyTableState({ message }: { message?: string }) {
+  return (
+    <div className="flex flex-col py-20 sm:py-44">
+      <Image
+        alt="image empty states"
+        className="mx-auto h-32 w-32"
+        height={32}
+        src="/empty.svg"
+        width={32}
+      />
+      <BodyText className="mt-3 text-center text-sm text-brand-orange-800">
+        {message || "No data available"}.
+      </BodyText>
+    </div>
+  );
+}
 
-export const Table = <T extends RowData>({
+export function Table<T extends RowData>({
   table,
   isLoading,
   emptyState = <EmptyTableState />,
   renderSubComponent,
-}: TableProps<T>) => {
+}: TableProps<T>) {
   const isEmpty = table.options.data?.length === 0;
   const colSpan = table.options.columns.length;
 
@@ -69,8 +73,8 @@ export const Table = <T extends RowData>({
             <tr key={headerGroup?.id}>
               {headerGroup?.headers?.map((header) => (
                 <th
-                  className="th border-b bg-gray-50 bg-opacity-75 p-4 text-left text-sm font-medium"
                   key={header?.id}
+                  className="th border-b bg-gray-50 bg-opacity-75 p-4 text-left text-sm font-medium"
                   scope="col"
                 >
                   {header?.isPlaceholder
@@ -88,25 +92,23 @@ export const Table = <T extends RowData>({
           {isLoading ? (
             <TableLoading colSpan={colSpan} />
           ) : isEmpty ? (
-            <>
-              <tr>
-                <td
-                  className="mx-auto w-full py-12 text-center"
-                  colSpan={colSpan}
-                >
-                  {emptyState}
-                </td>
-              </tr>
-            </>
+            <tr>
+              <td
+                className="mx-auto w-full py-12 text-center"
+                colSpan={colSpan}
+              >
+                {emptyState}
+              </td>
+            </tr>
           ) : (
             <>
               {table?.getRowModel()?.rows?.map((row) => (
                 <>
-                  <tr className="sm:even:bg-gray-50" key={row?.id}>
+                  <tr key={row?.id} className="sm:even:bg-gray-50">
                     {row?.getVisibleCells()?.map((cell) => (
                       <td
-                        className="text-brand-textBlack w-max max-w-full   overflow-visible p-4 text-left text-sm"
                         key={cell?.id}
+                        className="text-brand-textBlack w-max max-w-full   overflow-visible p-4 text-left text-sm"
                       >
                         {flexRender(
                           cell?.column?.columnDef?.cell,
@@ -131,4 +133,4 @@ export const Table = <T extends RowData>({
       </table>
     </div>
   );
-};
+}

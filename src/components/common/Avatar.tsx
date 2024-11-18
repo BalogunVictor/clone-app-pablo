@@ -1,23 +1,23 @@
-import React from 'react';
-import { UserIcon } from '@heroicons/react/24/solid';
-import classNames from 'classnames';
-import Image, { ImageProps } from 'next/image';
+import { UserIcon } from "@heroicons/react/24/solid";
+import classNames from "classnames";
+import Image, { ImageProps } from "next/image";
+import React from "react";
 
-import { Dot } from './Dot';
+import { Dot } from "./Dot";
 
 type AvatarProps = Partial<ImageProps> & { showActive?: boolean };
 
-export const Avatar = ({
+export function Avatar({
   className,
   showActive = true,
   src,
   ...rest
-}: AvatarProps) => {
+}: AvatarProps) {
   return (
     <div className="relative overflow-hidden">
       <div
         className={classNames(
-          'relative flex h-8 w-8 items-center justify-center overflow-hidden rounded-full  bg-brand-orange-50',
+          "relative flex h-8 w-8 items-center justify-center overflow-hidden rounded-full  bg-brand-orange-50",
           className,
         )}
       >
@@ -30,4 +30,4 @@ export const Avatar = ({
       {showActive && <Dot position="bottom-right" />}
     </div>
   );
-};
+}

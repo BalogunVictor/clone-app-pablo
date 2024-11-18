@@ -1,35 +1,35 @@
+import { ExclamationTriangleIcon } from "@heroicons/react/24/solid";
+import { cva, VariantProps } from "class-variance-authority";
+import classNames from "classnames";
 import React, {
   DetailedHTMLProps,
   forwardRef,
   InputHTMLAttributes,
   ReactNode,
   TextareaHTMLAttributes,
-} from 'react';
-import { ExclamationTriangleIcon } from '@heroicons/react/24/solid';
-import { cva, VariantProps } from 'class-variance-authority';
-import classNames from 'classnames';
+} from "react";
 
 const textareaStyles = cva(
-  'w-full appearance-none focus:ring-0 rounded-md font-normal leading-loose px-3 text-sm',
+  "w-full appearance-none focus:ring-0 rounded-md font-normal leading-loose px-3 text-sm",
   {
     defaultVariants: {
       error: false,
-      intent: 'normal',
-      size: 'md',
+      intent: "normal",
+      size: "md",
     },
     variants: {
       error: {
-        true: '!border-rose-500',
+        true: "!border-rose-500",
       },
       intent: {
-        fill: 'bg-gray-100 border-gray-200 focus:border-brand-textInput',
+        fill: "bg-gray-100 border-gray-200 focus:border-brand-textInput",
         normal:
-          'border-gray-300 border focus:!outline-none placeholder:text-gray-200  focus:border-brand-orange-800 bg-transparent',
+          "border-gray-300 border focus:!outline-none placeholder:text-gray-200  focus:border-brand-orange-800 bg-transparent",
       },
       size: {
-        lg: 'h-36',
-        md: 'h-40',
-        sm: 'h-28',
+        lg: "h-36",
+        md: "h-40",
+        sm: "h-28",
       },
     },
   },
@@ -37,7 +37,7 @@ const textareaStyles = cva(
 
 export type TextAreaProps = Omit<
   VariantProps<typeof textareaStyles>,
-  'error'
+  "error"
 > & {
   label?: string;
   loading?: boolean;
@@ -48,7 +48,7 @@ export type TextAreaProps = Omit<
       TextareaHTMLAttributes<HTMLTextAreaElement>,
       HTMLTextAreaElement
     >,
-    'size'
+    "size"
   >;
 
 export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
@@ -66,7 +66,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
     ref,
   ) => {
     return (
-      <label className={classNames('group block', className)}>
+      <label className={classNames("group block", className)}>
         {label && (
           <p className="mb-2 block text-sm font-medium leading-6 text-gray-700">
             {label}
@@ -74,10 +74,10 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
         )}
         <div className="relative rounded-md">
           <textarea
+            ref={ref}
             className={classNames(
               textareaStyles({ error: !!error, intent, size }),
             )}
-            ref={ref}
             {...rest}
           />
         </div>
@@ -98,4 +98,4 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
   },
 );
 
-TextArea.displayName = 'TextArea';
+TextArea.displayName = "TextArea";

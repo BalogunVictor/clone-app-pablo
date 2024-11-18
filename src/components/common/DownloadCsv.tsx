@@ -1,8 +1,8 @@
-import React, { ReactNode } from 'react';
-import { CSVLink } from 'react-csv';
-import { ArrowDownTrayIcon } from '@heroicons/react/24/solid';
+import { ArrowDownTrayIcon } from "@heroicons/react/24/solid";
+import React, { ReactNode } from "react";
+import { CSVLink } from "react-csv";
 
-import { Button } from './Button';
+import { Button } from "./Button";
 
 type DownloadCsvProps = {
   header?: {
@@ -14,11 +14,11 @@ type DownloadCsvProps = {
   children?: ReactNode;
 };
 
-function flattenObjectKeys(obj: any, parentKey = '') {
+function flattenObjectKeys(obj: any, parentKey = "") {
   let keys: any = [];
-  for (let key in obj) {
+  for (const key in obj) {
     if (
-      typeof obj[key] === 'object' &&
+      typeof obj[key] === "object" &&
       obj[key] !== null &&
       !Array.isArray(obj[key])
     ) {
@@ -30,7 +30,7 @@ function flattenObjectKeys(obj: any, parentKey = '') {
       });
       // Optionally, flatten array elements
       obj[key].forEach((item: any, index: any) => {
-        if (typeof item === 'object' && item !== null) {
+        if (typeof item === "object" && item !== null) {
           keys = keys.concat(
             flattenObjectKeys(item, `${parentKey}${key}[${index}].`),
           );
@@ -44,14 +44,14 @@ function flattenObjectKeys(obj: any, parentKey = '') {
     } else {
       keys.push({
         key: `${parentKey}${key}`,
-        label: `${parentKey}${key}`.replaceAll('.', ' ').toLocaleUpperCase(),
+        label: `${parentKey}${key}`.replaceAll(".", " ").toLocaleUpperCase(),
       });
     }
   }
   return keys;
 }
 
-const DownloadCsv = ({ header, data, children, name }: DownloadCsvProps) => {
+function DownloadCsv({ header, data, children, name }: DownloadCsvProps) {
   return (
     <CSVLink
       data={data}
@@ -65,6 +65,6 @@ const DownloadCsv = ({ header, data, children, name }: DownloadCsvProps) => {
       )}
     </CSVLink>
   );
-};
+}
 
 export default DownloadCsv;

@@ -1,39 +1,40 @@
-'use client';
-import React, { ButtonHTMLAttributes, forwardRef, useState } from 'react';
-import DatePicker from 'react-datepicker';
-import { CalendarIcon } from '@heroicons/react/24/outline';
-import { ExclamationTriangleIcon } from '@heroicons/react/24/solid';
-import { cva, VariantProps } from 'class-variance-authority';
+"use client";
+
+import { CalendarIcon } from "@heroicons/react/24/outline";
+import { ExclamationTriangleIcon } from "@heroicons/react/24/solid";
+import { cva, VariantProps } from "class-variance-authority";
+import React, { ButtonHTMLAttributes, forwardRef, useState } from "react";
+import DatePicker from "react-datepicker";
 
 const buttonStyle = cva(
-  'rounded-lg  font-medium py-3 flex gap-2 border text-left w-full text-sm disabled:opacity-70',
+  "rounded-lg  font-medium py-3 flex gap-2 border text-left w-full text-sm disabled:opacity-70",
   {
     defaultVariants: {
       block: true,
       error: false,
-      intent: 'normal',
-      size: 'md',
+      intent: "normal",
+      size: "md",
     },
     variants: {
-      block: { true: '!w-full' },
+      block: { true: "!w-full" },
       error: {
-        true: '!border-rose-500',
+        true: "!border-rose-500",
       },
 
       intent: {
-        fill: '!bg-gray-100 !border-gray-200 focus:border-brand-textInput',
-        normal: '!border-gray-300  focus:border-brand-textInput bg-transparent',
+        fill: "!bg-gray-100 !border-gray-200 focus:border-brand-textInput",
+        normal: "!border-gray-300  focus:border-brand-textInput bg-transparent",
       },
       size: {
-        lg: 'px-3.5 py-2.5',
-        md: 'px-4 py-2',
-        sm: 'px-2.5 py-1',
+        lg: "px-3.5 py-2.5",
+        md: "px-4 py-2",
+        sm: "px-2.5 py-1",
       },
     },
   },
 );
 
-type Props = Omit<VariantProps<typeof buttonStyle>, 'error'> & {
+type Props = Omit<VariantProps<typeof buttonStyle>, "error"> & {
   className?: string;
   defaultStartDate?: Date | null;
   defaultEndDate?: Date | null;
@@ -42,7 +43,7 @@ type Props = Omit<VariantProps<typeof buttonStyle>, 'error'> & {
   error?: string;
 };
 
-type ButtonProps = Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'onChange'> &
+type ButtonProps = Omit<ButtonHTMLAttributes<HTMLButtonElement>, "onChange"> &
   Props;
 
 export function DateRangePicker({
@@ -71,8 +72,8 @@ export function DateRangePicker({
         <button
           className={style}
           {...(props as ButtonHTMLAttributes<HTMLButtonElement>)}
-          onClick={onClick}
           ref={ref}
+          onClick={onClick}
           type="button"
         >
           <div className="mr-auto">{value}</div>
@@ -91,7 +92,7 @@ export function DateRangePicker({
     );
   });
 
-  Output.displayName = 'Output';
+  Output.displayName = "Output";
 
   const handleOnChange = (date: [Date | null, Date | null]) => {
     const startDate = date[0];

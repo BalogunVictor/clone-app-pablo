@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import React, { Fragment } from 'react';
-import { Menu, Transition } from '@headlessui/react';
-import { EllipsisVerticalIcon } from '@heroicons/react/24/solid';
-import classNames from 'classnames';
+import { Menu, Transition } from "@headlessui/react";
+import { EllipsisVerticalIcon } from "@heroicons/react/24/solid";
+import classNames from "classnames";
+import React, { Fragment } from "react";
 
 export type Option = { id: string; label: string; disabled?: boolean };
 
@@ -15,16 +15,16 @@ type Props = {
 
 const tableDropdown = [
   {
-    id: 'edit',
-    label: 'Edit',
+    id: "edit",
+    label: "Edit",
   },
   {
-    id: 'delete',
-    label: 'Deactivate',
+    id: "delete",
+    label: "Deactivate",
   },
 ];
 
-export const DropMenu = ({ options, handleClick, disabled }: Props) => {
+export function DropMenu({ options, handleClick, disabled }: Props) {
   return (
     <div className="flex w-full justify-end">
       <Menu as="div" className="relative ml-4 h-8 max-h-8 flex-shrink-0">
@@ -51,7 +51,7 @@ export const DropMenu = ({ options, handleClick, disabled }: Props) => {
                 <Menu.Item key={index}>
                   <div
                     className={classNames(
-                      'text-brand-blue block px-4 py-2 text-sm hover:bg-gray-100',
+                      "text-brand-blue block px-4 py-2 text-sm hover:bg-gray-100",
                     )}
                     onClick={() => handleClick && handleClick(option)}
                   >
@@ -64,4 +64,4 @@ export const DropMenu = ({ options, handleClick, disabled }: Props) => {
       </Menu>
     </div>
   );
-};
+}

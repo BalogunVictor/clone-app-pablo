@@ -1,8 +1,9 @@
-'use client';
-import React from 'react';
-import { Pagination as ReactPaginate } from 'react-headless-pagination';
-//import ReactPaginate from 'react-paginate';
-import classNames from 'classnames';
+"use client";
+
+// import ReactPaginate from 'react-paginate';
+import classNames from "classnames";
+import React from "react";
+import { Pagination as ReactPaginate } from "react-headless-pagination";
 
 type PaginationProps = {
   onPageChange: (selected: number) => void;
@@ -10,13 +11,13 @@ type PaginationProps = {
   isLoading?: boolean;
   page: number;
 };
-export const Pagination = ({
+export function Pagination({
   pageCount,
   onPageChange,
   page,
 
   isLoading,
-}: PaginationProps) => {
+}: PaginationProps) {
   if (pageCount < 2 || isLoading) return null;
 
   return (
@@ -31,7 +32,7 @@ export const Pagination = ({
       truncableText="..."
     >
       <ReactPaginate.PrevButton className="!text-brand-blue flex aspect-square w-8 cursor-pointer  items-center justify-center rounded text-sm">
-        {'<'}
+        {"<"}
       </ReactPaginate.PrevButton>
 
       <nav className="flex flex-grow justify-center">
@@ -45,8 +46,8 @@ export const Pagination = ({
       </nav>
 
       <ReactPaginate.NextButton className="!text-brand-blue flex aspect-square w-8 cursor-pointer  items-center justify-center rounded text-sm">
-        {'>'}
+        {">"}
       </ReactPaginate.NextButton>
     </ReactPaginate>
   );
-};
+}

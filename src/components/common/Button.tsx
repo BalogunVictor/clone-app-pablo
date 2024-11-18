@@ -1,11 +1,12 @@
 'use client';
-import React, { ButtonHTMLAttributes, ReactNode } from 'react';
+
 import { cva, VariantProps } from 'class-variance-authority';
 import classNames from 'classnames';
 import Link, { LinkProps } from 'next/link';
+import React, { ButtonHTMLAttributes, ReactNode } from 'react';
 
 const buttonStyle = cva(
-  'rounded-lg  gap-2 flex justify-center items-center w-max transition-all duration-150  text-sm  disabled:opacity-70',
+  'w-full rounded-lg gap-2 flex outline-none tracking-wide justify-center items-center transition-all duration-150 text-sm font-bold disabled:opacity-70',
   {
     defaultVariants: {
       block: false,
@@ -17,7 +18,7 @@ const buttonStyle = cva(
       block: { true: '!w-full' },
       kinds: {
         normal: 'border-none hover:opacity-70',
-        primary: 'bg-brand-orange-800 text-white hover:bg-opacity-80 shadow-sm',
+        primary: 'bg-gray-900 text-white hover:bg-opacity-80 shadow-sm',
         secondary: 'border border-gray-300 hover:opacity-70',
       },
       rounded: {
@@ -29,7 +30,7 @@ const buttonStyle = cva(
         sm: 'px-3.5 py-2.5',
       },
     },
-  },
+  }
 );
 
 type Props = VariantProps<typeof buttonStyle> & {
@@ -64,11 +65,11 @@ export function Button({
   ref,
   ...props
 }: ButtonProps | ButtonLinkProps) {
-  let inner = <>{children}</>;
+  const inner = <>{children}</>;
 
   const style = classNames(
     buttonStyle({ block, kinds, rounded, size }),
-    className,
+    className
   );
   if (href) {
     return (
@@ -80,8 +81,8 @@ export function Button({
 
   return (
     <button
-      className={style}
       ref={ref}
+      className={style}
       {...(props as ButtonHTMLAttributes<HTMLButtonElement>)}
     >
       {isLoading && (

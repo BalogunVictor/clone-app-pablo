@@ -1,48 +1,49 @@
-'use client';
-import { ReactNode } from 'react';
+"use client";
+
+import { cva, VariantProps } from "class-variance-authority";
+import classNames from "classnames";
+import { ReactNode } from "react";
 import ReactSelect, {
   components,
   Props as ReactSelectProps,
-} from 'react-select';
-import ReactSelectAsync from 'react-select/async';
-import ReactSelectCreatable from 'react-select/creatable';
-import { cva, VariantProps } from 'class-variance-authority';
-import classNames from 'classnames';
+} from "react-select";
+import ReactSelectAsync from "react-select/async";
+import ReactSelectCreatable from "react-select/creatable";
 
-const controlStyles = cva('w-full rounded-md shadow-sm border text-sm', {
+const controlStyles = cva("w-full rounded-md shadow-sm appearance-none tracking-widest tracking-widest border text-lg", {
   defaultVariants: {
     error: false,
-    intent: 'normal',
+    intent: "normal",
     isDisabled: false,
     isFocused: false,
-    size: 'md',
+    size: "md",
   },
   variants: {
     error: {
-      true: '!border-rose-500',
+      true: "!border-rose-500",
     },
     intent: {
-      fill: '!bg-gray-100 !border-gray-100 focus-within:!border-brand-textInput',
+      fill: "!bg-gray-100 !border-gray-100 focus-within:!border-brand-textInput",
       normal:
-        '!border-gray-300 border focus:!outline-none placeholder:text-gray-200  focus:!border-brand-orange-800! bg-transparent',
+        "!border-2 !border-black !bg-gray-200 focus:!outline-none",
     },
     isDisabled: {
-      true: '!bg-gray-100',
+      true: "!bg-gray-100",
     },
     isFocused: {
-      false: '!border-gray-300',
-      true: '!border-brand-textInput',
+      false: "!border-gray-300",
+      true: "!border-brand-textInput",
     },
     size: {
-      lg: '!min-h-h-16',
-      md: '!min-h-[3rem]',
+      lg: "!min-h-h-16",
+      md: "!min-h-[3rem]",
     },
   },
 });
 
 export type SelectProps<Option, IsMulti extends boolean> = Omit<
   VariantProps<typeof controlStyles>,
-  'error' | 'isFocused'
+  "error" | "isFocused"
 > &
   ReactSelectProps<Option, IsMulti> & {
     isCreatable?: boolean;
@@ -56,13 +57,14 @@ export type SelectProps<Option, IsMulti extends boolean> = Omit<
 const getSelectComponent = (isAsync?: boolean, isCreatable?: boolean) => {
   if (isAsync) {
     return ReactSelectAsync;
-  } else if (isCreatable) {
+  }
+  if (isCreatable) {
     return ReactSelectCreatable;
   }
   return ReactSelect;
 };
 
-export const Select = <Option, IsMulti extends boolean>({
+export function Select<Option, IsMulti extends boolean>({
   label,
   error,
   isCreatable,
@@ -73,7 +75,7 @@ export const Select = <Option, IsMulti extends boolean>({
   leftIcon,
   intent,
   ...props
-}: SelectProps<Option, IsMulti>) => {
+}: SelectProps<Option, IsMulti>) {
   const SelectComponent = getSelectComponent(isAsync, isCreatable);
 
   return (
@@ -81,7 +83,7 @@ export const Select = <Option, IsMulti extends boolean>({
       {label && (
         <div className="mb-2 flex justify-between">
           <label
-            className="block text-sm font-medium leading-6 text-gray-900"
+              className="mb-2 block text-lg font-medium leading-6 text-black"
             htmlFor={props.name}
           >
             {label}
@@ -94,13 +96,13 @@ export const Select = <Option, IsMulti extends boolean>({
           classNames={{
             control: ({ isFocused, isDisabled }) =>
               controlStyles({ error: !!error, intent, isDisabled, isFocused }),
-            indicatorSeparator: () => 'hidden',
-            placeholder: () => '!text-gray-200',
+            indicatorSeparator: () => "hidden",
+            // placeholder: () => "!text-gray-20",
           }}
           components={{
             ValueContainer: ({ children, className, ...rest }) => (
               <components.ValueContainer
-                className={classNames(className, '!flex items-center gap-x-1')}
+                className={classNames(className, "!flex items-center gap-x-1")}
                 {...rest}
               >
                 {leftIcon && <span>{leftIcon}</span>}
@@ -110,16 +112,16 @@ export const Select = <Option, IsMulti extends boolean>({
           }}
           id={props.name}
           isDisabled={isDisabled}
-          placeholder={placeholder ?? 'Select an option'}
+          placeholder={placeholder ?? "Select an option"}
           styles={{
             control: (base) => ({
               ...base,
-              boxShadow: 'none',
+              boxShadow: "none",
             }),
             input: (base) => ({
               ...base,
-              'input:focus': {
-                boxShadow: 'none',
+              "input:focus": {
+                boxShadow: "none",
               },
             }),
           }}
@@ -141,4 +143,4 @@ export const Select = <Option, IsMulti extends boolean>({
       )}
     </div>
   );
-};
+}

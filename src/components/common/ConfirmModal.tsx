@@ -1,9 +1,10 @@
-'use client';
-import React, { ReactNode } from 'react';
-import { CheckCircleIcon, XMarkIcon } from '@heroicons/react/24/outline';
-import { Button } from '@ui/Button';
-import { Modal } from '@ui/Modal';
-import { BodyText, Title } from '@ui/Text';
+"use client";
+
+import { CheckCircleIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import { Button } from "@ui/Button";
+import { Modal } from "@ui/Modal";
+import { BodyText, Title } from "@ui/Text";
+import React, { ReactNode } from "react";
 
 type ConfirmModalProps = {
   isOpen: boolean;
@@ -59,7 +60,7 @@ export function ConfirmModal({
           kinds="normal"
           onClick={handleCancel}
         >
-          {cancelText || 'No, cancel'}
+          {cancelText || "No, cancel"}
         </Button>
         <Button
           block
@@ -67,7 +68,7 @@ export function ConfirmModal({
           isLoading={isLoading}
           onClick={() => onConfirm && onConfirm(onClose)}
         >
-          {confirmText || 'Yes, confirm'}
+          {confirmText || "Yes, confirm"}
         </Button>
       </div>
     </Modal>

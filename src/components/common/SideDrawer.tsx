@@ -1,21 +1,22 @@
-'use client';
-import React, { Fragment, ReactNode } from 'react';
-import { Dialog, Transition } from '@headlessui/react';
-import classNames from 'classnames';
+"use client";
+
+import { Dialog, Transition } from "@headlessui/react";
+import classNames from "classnames";
+import React, { Fragment, ReactNode } from "react";
 
 type DashboardMobileDrawerProps = {
   open: boolean;
   onClose: () => void;
   children: ReactNode;
-  position?: 'left' | 'right';
+  position?: "left" | "right";
 };
 
-export const SideDrawer = ({
+export function SideDrawer({
   onClose,
   open,
   children,
-  position = 'left',
-}: DashboardMobileDrawerProps) => {
+  position = "left",
+}: DashboardMobileDrawerProps) {
   return (
     <Transition.Root as={Fragment} show={open}>
       <Dialog as="div" className="relative z-50" onClose={onClose}>
@@ -32,24 +33,24 @@ export const SideDrawer = ({
         </Transition.Child>
 
         <div
-          className={classNames('fixed inset-0 flex', {
-            'justify-end': position === 'right',
-            'justify-start': position === 'left',
+          className={classNames("fixed inset-0 flex", {
+            "justify-end": position === "right",
+            "justify-start": position === "left",
           })}
         >
           <Transition.Child
             as={Fragment}
             enter="transition ease-in-out duration-300 transform"
             enterFrom={classNames({
-              '-translate-x-full': position === 'left',
-              'translate-x-full': position === 'right',
+              "-translate-x-full": position === "left",
+              "translate-x-full": position === "right",
             })}
             enterTo="translate-x-0"
             leave="transition ease-in-out duration-300 transform"
             leaveFrom="translate-x-0"
             leaveTo={classNames({
-              '-translate-x-full': position === 'left',
-              'translate-x-full': position === 'right',
+              "-translate-x-full": position === "left",
+              "translate-x-full": position === "right",
             })}
           >
             <Dialog.Panel as={Fragment}>{children}</Dialog.Panel>
@@ -58,4 +59,4 @@ export const SideDrawer = ({
       </Dialog>
     </Transition.Root>
   );
-};
+}

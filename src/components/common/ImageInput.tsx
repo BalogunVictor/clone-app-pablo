@@ -1,17 +1,17 @@
-import React, { useCallback } from 'react';
-import { useDropzone } from 'react-dropzone';
 import {
   CloudArrowUpIcon,
   DocumentIcon,
   ExclamationTriangleIcon,
   XMarkIcon,
-} from '@heroicons/react/24/solid';
-import classNames from 'classnames';
+} from "@heroicons/react/24/solid";
+import classNames from "classnames";
+import React, { useCallback } from "react";
+import { useDropzone } from "react-dropzone";
 
-import { BodyText } from './Text';
+import { BodyText } from "./Text";
 
 const accept = {
-  'image/*': ['.png', '.jpeg', '.jpg'],
+  "image/*": [".png", ".jpeg", ".jpg"],
 };
 
 type ImageInputProps = {
@@ -26,7 +26,7 @@ type ImageInputProps = {
   error?: string;
 };
 
-export const ImageInput = ({
+export function ImageInput({
   onChange = () => {},
   disabled,
   value = [],
@@ -36,7 +36,7 @@ export const ImageInput = ({
   isMultiple = true,
   placeholder,
   error,
-}: ImageInputProps) => {
+}: ImageInputProps) {
   const onDrop = useCallback(
     async (files: File[]) => {
       const newImages = isMultiple ? [...value, files[0]] : [files[0]];
@@ -71,8 +71,8 @@ export const ImageInput = ({
       <div className="relative">
         <div
           className={classNames(
-            'border-brand-gray4 block rounded-xl border bg-gray-100 p-2',
-            { 'border-rose-500': !!error },
+            "border-brand-gray4 block rounded-xl border bg-gray-100 p-2",
+            { "border-rose-500": !!error },
           )}
           {...getRootProps()}
         >
@@ -103,14 +103,14 @@ export const ImageInput = ({
             </label>
 
             <div
-              className={classNames('grid gap-4 ', {
-                'sm:grid-cols-2': value.length > 1,
+              className={classNames("grid gap-4 ", {
+                "sm:grid-cols-2": value.length > 1,
               })}
             >
               {value.map((image, index) => (
                 <div
-                  className="gap-z-3 bg-brand-green-700 relative mt-2 flex justify-between overflow-hidden rounded-md p-2"
                   key={index}
+                  className="gap-z-3 bg-brand-green-700 relative mt-2 flex justify-between overflow-hidden rounded-md p-2"
                 >
                   <BodyText className="flex gap-x-1 text-sm text-white">
                     <DocumentIcon className="h-5 w-5" />
@@ -141,4 +141,4 @@ export const ImageInput = ({
   };
 
   return <>{getUploadComponent()}</>;
-};
+}
