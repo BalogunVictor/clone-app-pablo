@@ -1,3 +1,6 @@
+/* eslint-disable react/jsx-no-useless-fragment */
+/* eslint-disable react/button-has-type */
+
 'use client';
 
 import { cva, VariantProps } from 'class-variance-authority';

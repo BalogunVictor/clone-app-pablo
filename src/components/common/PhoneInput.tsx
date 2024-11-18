@@ -1,34 +1,33 @@
-"use client"
+'use client';
 
-import { ExclamationTriangleIcon } from "@heroicons/react/24/solid";
-import { cva, VariantProps } from "class-variance-authority";
-import classNames from "classnames";
-import React from "react";
+import { ExclamationTriangleIcon } from '@heroicons/react/24/solid';
+import { cva, VariantProps } from 'class-variance-authority';
+import classNames from 'classnames';
+import React from 'react';
 import {
   PhoneInput as ReactPhoneInput,
   PhoneInputProps as Props,
-} from "react-international-phone";
+} from 'react-international-phone';
 
 const inputStyles = cva(
-  "w-full text-black appearance-none tracking-widest tracking-widest focus:ring-0 rounded-md font-normal leading-loose px-3 text-lg",
+  'w-full text-black appearance-none tracking-widest tracking-widest focus:ring-0 rounded-md font-normal leading-loose px-3 text-lg',
   {
     defaultVariants: {
-      intent: "normal",
-      size: "md",
+      intent: 'normal',
+      size: 'md',
     },
     variants: {
       intent: {
-        fill: "!bg-gray-100  !border-gray-200 focus:!border-brand-textInput",
-        normal:
-          "border-2 border-black bg-gray-200 focus:!outline-none",
+        fill: '!bg-gray-100  !border-gray-200 focus:!border-brand-textInput',
+        normal: 'border-2 border-black bg-gray-200 focus:!outline-none',
       },
       size: {
-        lg: "h-16",
-        md: "!h-12",
-        sm: "h-9",
+        lg: 'h-16',
+        md: '!h-12',
+        sm: 'h-9',
       },
     },
-  },
+  }
 );
 
 export type PhoneInputProps = VariantProps<typeof inputStyles> &
@@ -43,12 +42,12 @@ export function PhoneInput({
   intent,
   size,
   label,
-  defaultCountry = "us",
-  value = "",
+  defaultCountry = 'us',
+  value = '',
   ...props
 }: PhoneInputProps) {
   const className = classNames(inputStyles({ intent, size }), {
-    "!border-red-500": !!error,
+    '!border-red-500': !!error,
   });
   return (
     <label className="block">
@@ -62,10 +61,10 @@ export function PhoneInput({
         className="focus-within:!border-brand-textInput group !flex  !w-full"
         countrySelectorStyleProps={{
           buttonClassName: classNames(
-            "!h-full group-focus-within:!border-brand-textInput !bg-gray-200 !border",
-            { "!border-red-500": !!error },
+            '!h-full group-focus-within:!border-brand-textInput !bg-gray-200 !border',
+            { '!border-red-500': !!error }
           ),
-          dropdownArrowClassName: "!hidden",
+          dropdownArrowClassName: '!hidden',
         }}
         defaultCountry={defaultCountry}
         inputClassName={className}

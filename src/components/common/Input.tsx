@@ -1,42 +1,41 @@
-import { ExclamationTriangleIcon } from "@heroicons/react/24/solid";
-import { cva, VariantProps } from "class-variance-authority";
-import classNames from "classnames";
+import { ExclamationTriangleIcon } from '@heroicons/react/24/solid';
+import { cva, VariantProps } from 'class-variance-authority';
+import classNames from 'classnames';
 import React, {
   DetailedHTMLProps,
   forwardRef,
   InputHTMLAttributes,
   ReactNode,
-} from "react";
+} from 'react';
 
 // w-full h-8  border-solid border-2 border-black mt-2  pl-2
 
 const inputStyles = cva(
-  "w-full rounded block appearance-none tracking-widest tracking-widest focus:ring-0 rounded-md font-normal leading-loose px-3 text-lg",
+  'w-full rounded block appearance-none tracking-widest tracking-widest focus:ring-0 rounded-md font-normal leading-loose px-3 text-lg',
   {
     defaultVariants: {
       error: false,
-      intent: "normal",
-      size: "md",
+      intent: 'normal',
+      size: 'md',
     },
     variants: {
       error: {
-        true: "!border-rose-500",
+        true: '!border-rose-500',
       },
       intent: {
-        fill: "bg-gray-100 border-gray-200 focus:border-brand-textInput",
-        normal:
-          "border-2 border-black bg-gray-200 focus:!outline-none",
+        fill: 'bg-gray-100 border-gray-200 focus:border-brand-textInput',
+        normal: 'border-2 border-black bg-gray-200 focus:!outline-none',
       },
       size: {
-        lg: "h-16",
-        md: "h-12",
-        sm: "h-10",
+        lg: 'h-16',
+        md: 'h-12',
+        sm: 'h-10',
       },
     },
-  },
+  }
 );
 
-export type InputProps = Omit<VariantProps<typeof inputStyles>, "error"> & {
+export type InputProps = Omit<VariantProps<typeof inputStyles>, 'error'> & {
   label?: string;
   loading?: boolean;
   error?: string;
@@ -46,7 +45,7 @@ export type InputProps = Omit<VariantProps<typeof inputStyles>, "error"> & {
   isLoading?: boolean;
 } & Omit<
     DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>,
-    "size"
+    'size'
   >;
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
@@ -63,10 +62,10 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
       isLoading,
       ...rest
     },
-    ref,
+    ref
   ) => {
     return (
-      <label className={classNames("group block", className)}>
+      <label className={classNames('group block', className)}>
         {label && (
           <p className="mb-2 block text-lg font-medium leading-6 text-black">
             {label}
@@ -83,9 +82,9 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
             className={classNames(
               inputStyles({ error: !!error, intent, size }),
               {
-                "pl-8": leftIcon,
-                "pr-8": rightIcon,
-              },
+                'pl-8': leftIcon,
+                'pr-8': rightIcon,
+              }
             )}
             {...rest}
           />
@@ -116,7 +115,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         )}
       </label>
     );
-  },
+  }
 );
 
-Input.displayName = "Input";
+Input.displayName = 'Input';

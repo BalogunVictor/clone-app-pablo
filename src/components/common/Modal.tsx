@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { Dialog, Transition } from "@headlessui/react";
-import classNames from "classnames";
-import { Fragment, ReactNode } from "react";
+import { Dialog, Transition } from '@headlessui/react';
+import classNames from 'classnames';
+import { Fragment, ReactNode } from 'react';
 
 type Props = {
   isOpen: boolean;
@@ -24,8 +24,8 @@ export function Modal({
   isCentered = true,
 }: Props) {
   const handleClose = () => {
-    if (typeof reset === "function") reset();
-    if (typeof onClose === "function") onClose();
+    if (typeof reset === 'function') reset();
+    if (typeof onClose === 'function') onClose();
   };
   return (
     <Transition.Root as={Fragment} show={isOpen}>
@@ -46,7 +46,7 @@ export function Modal({
           <div
             className={classNames(
               `flex h-full justify-center overflow-hidden md:p-4`,
-              { "lg:items-center": isCentered },
+              { 'lg:items-center': isCentered }
             )}
           >
             <Transition.Child
@@ -60,8 +60,8 @@ export function Modal({
             >
               <Dialog.Panel
                 className={classNames(
-                  "relative flex max-h-full w-full max-w-lg transform flex-col rounded-lg bg-white p-4 shadow-xl transition-all",
-                  className,
+                  'relative flex max-h-full w-full max-w-lg transform flex-col rounded-lg bg-white p-4 shadow-xl transition-all',
+                  className
                 )}
               >
                 <div>{header}</div>

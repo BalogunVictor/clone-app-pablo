@@ -1,20 +1,20 @@
-import classNames from "classnames";
-import Image, { ImageProps } from "next/image";
-import React from "react";
+import classNames from 'classnames';
+import Image, { ImageProps } from 'next/image';
+import React from 'react';
 
 export function Logo({
   className,
-  type = "white",
+  type = 'white',
   ...rest
-}: Partial<ImageProps> & { type?: "white" | "black" }) {
+}: Partial<ImageProps> & { type?: 'white' | 'black' }) {
   return (
     <Image
       alt="starlink"
       height={120}
-      src={type === "white" ? "/white-logo.svg" : "/black-logo.svg"}
+      src={type === 'white' ? '/white-logo.svg' : '/black-logo.svg'}
       width={135}
       {...rest}
-      className={classNames("max-w-full", className)}
+      className={classNames('max-w-full', className)}
     />
   );
 }

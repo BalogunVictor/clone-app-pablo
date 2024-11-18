@@ -1,24 +1,24 @@
-"use client";
+'use client';
 
-import { Dialog, Transition } from "@headlessui/react";
-import { XMarkIcon } from "@heroicons/react/24/solid";
-import classNames from "classnames";
-import React, { Fragment, ReactNode } from "react";
+import { Dialog, Transition } from '@headlessui/react';
+import { XMarkIcon } from '@heroicons/react/24/solid';
+import classNames from 'classnames';
+import React, { Fragment, ReactNode } from 'react';
 
-import { Wrapper } from "./Wrapper";
+import { Wrapper } from './Wrapper';
 
 type BottomDrawerProps = {
   open: boolean;
   onClose: () => void;
   children: ReactNode;
-  position?: "top" | "bottom";
+  position?: 'top' | 'bottom';
 };
 
 export function BottomDrawer({
   onClose,
   open,
   children,
-  position = "bottom",
+  position = 'bottom',
 }: BottomDrawerProps) {
   return (
     <Transition.Root as={Fragment} show={open}>
@@ -39,20 +39,20 @@ export function BottomDrawer({
           <div className="fixed inset-0 bg-gray-900/80" />
         </Transition.Child>
 
-        <div className={classNames("fixed inset-x-0 bottom-0 flex ", {})}>
+        <div className={classNames('fixed inset-x-0 bottom-0 flex ', {})}>
           <Transition.Child
             as={Fragment}
             enter="transition ease-in-out duration-300 transform"
             enterFrom={classNames({
-              "-translate-y-full": position === "top",
-              "translate-y-full": position === "bottom",
+              '-translate-y-full': position === 'top',
+              'translate-y-full': position === 'bottom',
             })}
             enterTo="translate-y-0"
             leave="transition ease-in-out duration-300 transform"
             leaveFrom="translate-y-0"
             leaveTo={classNames({
-              "-translate-y-full": position === "top",
-              "translate-y-full": position === "bottom",
+              '-translate-y-full': position === 'top',
+              'translate-y-full': position === 'bottom',
             })}
           >
             <Dialog.Panel
