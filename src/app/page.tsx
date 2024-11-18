@@ -18,7 +18,7 @@ export default function Home() {
 
         <div className="text-center py-4">
           <span className="text-gray-500">
-            Don't have an Account?{' '}
+            Don’t have an Account?{' '}
             <Link className="text-red-500" href="/signup">
               SignUp
             </Link>
