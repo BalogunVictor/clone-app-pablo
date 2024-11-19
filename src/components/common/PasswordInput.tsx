@@ -12,7 +12,7 @@ import React, {
 } from 'react';
 
 const inputStyles = cva(
-  'w-full rounded block appearance-none tracking-widest tracking-widest focus:ring-0 rounded-md font-normal leading-loose px-3 text-lg',
+  'w-full block text-white placeholder:text-white appearance-none tracking-normal font-normal leading-loose px-3 text-sm',
   {
     defaultVariants: {
       error: false,
@@ -25,7 +25,7 @@ const inputStyles = cva(
       },
       intent: {
         fill: 'bg-gray-100 border-gray-200 focus:border-brand-textInput',
-        normal: 'border-2 border-black bg-gray-200 focus:!outline-none',
+        normal: 'bg-blueDark opacity-65 focus:!outline-none',
       },
       size: {
         lg: 'h-16',
@@ -80,11 +80,11 @@ export const PasswordInput = forwardRef<HTMLInputElement, InputProps>(
           />
 
           <button
-            className="text-brand-textBlack absolute inset-y-0  right-0 z-20 flex items-center justify-center rounded px-4 text-sm font-medium leading-6 hover:opacity-70"
+            className="text-white absolute inset-y-0  right-0 z-20 flex items-center justify-center rounded px-4 text-sm font-medium leading-6 hover:opacity-70"
             onClick={() => setShowPassword((prev) => !prev)}
             type="button"
           >
-            {showPassword ? 'Hide password' : 'Show password'}
+            {showPassword ? 'Hide' : 'Show'}
           </button>
         </div>
 

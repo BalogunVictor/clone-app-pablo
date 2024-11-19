@@ -1,30 +1,38 @@
 import { Button } from '@ui/Button';
 import { Input } from '@ui/Input';
 import { PasswordInput } from '@ui/PasswordInput';
-import Link from 'next/link';
+import Image from 'next/image';
+import { Logo } from 'src/assets/images';
 
 export default function Home() {
   return (
-    <div className="container w-1/2 mx-auto mt-5">
-      <div className="flex flex-col items-center">
-        <h4 className="text-5xl font-bold">Login</h4>
-      </div>
-      <form className="space-y-6">
-        <Input label="Email" placeholder="Email*" />
-        <PasswordInput label="Password" placeholder="Password*" />
-        <Button href="/dashboard" rounded>
-          Login
-        </Button>
-
-        <div className="text-center py-4">
-          <span className="text-gray-500">
-            Don’t have an Account?{' '}
-            <Link className="text-red-500" href="/signup">
-              SignUp
-            </Link>
-          </span>
+    <div className="bg-gradient-to-b from-blueLight to-blueDark min-h-screen flex flex-col">
+      <div className="container h-full md:w-1/2 mx-auto p-5 flex flex-col flex-grow">
+        <div className="flex flex-col items-center">
+          <Image width={300} height={300} alt="logo" src={Logo} />
         </div>
-      </form>
+        <form className="space-y-6 flex flex-col flex-grow">
+          <Input size="lg" placeholder="User ID" />
+          <PasswordInput size="lg" placeholder="Password" />
+          <Button kinds="normal" href="/dashboard" rounded>
+            Sign On
+          </Button>
+
+          <div className="flex justify-between p-8 text-white">
+            <span>Forgot User ID</span>
+            <span>Forgot Password</span>
+          </div>
+        </form>
+
+        <div className="mt-auto">
+          <hr className="w-full bg-white" />
+          <div className="flex justify-between p-2 text-white">
+            <span>Find ATM</span>
+            <span>Register/Activate</span>
+            <span>Support</span>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

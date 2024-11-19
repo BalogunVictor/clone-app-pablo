@@ -11,7 +11,7 @@ import React, {
 // w-full h-8  border-solid border-2 border-black mt-2  pl-2
 
 const inputStyles = cva(
-  'w-full rounded block appearance-none tracking-widest tracking-widest focus:ring-0 rounded-md font-normal leading-loose px-3 text-lg',
+  'w-full block text-white placeholder:text-white appearance-none tracking-normal font-normal leading-loose px-3 text-sm',
   {
     defaultVariants: {
       error: false,
@@ -24,7 +24,7 @@ const inputStyles = cva(
       },
       intent: {
         fill: 'bg-gray-100 border-gray-200 focus:border-brand-textInput',
-        normal: 'border-2 border-black bg-gray-200 focus:!outline-none',
+        normal: 'bg-blueDark opacity-65 focus:!outline-none',
       },
       size: {
         lg: 'h-16',

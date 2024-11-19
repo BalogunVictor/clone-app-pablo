@@ -1,1 +1,1 @@
-export { default as NextImage } from './nextjs.png';
+export { default as Logo } from './citibankLogo.png';

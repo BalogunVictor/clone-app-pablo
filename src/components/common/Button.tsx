@@ -9,7 +9,7 @@ import Link, { LinkProps } from 'next/link';
 import React, { ButtonHTMLAttributes, ReactNode } from 'react';
 
 const buttonStyle = cva(
-  'w-full rounded-lg gap-2 flex outline-none tracking-wide justify-center items-center transition-all duration-150 text-sm font-bold disabled:opacity-70',
+  'w-full rounded-lg gap-2 flex outline-none tracking-wide justify-center items-center transition-all duration-150 text-sm font-medium disabled:opacity-70',
   {
     defaultVariants: {
       block: false,
@@ -20,7 +20,7 @@ const buttonStyle = cva(
     variants: {
       block: { true: '!w-full' },
       kinds: {
-        normal: 'border-none hover:opacity-70',
+        normal: 'border-none hover:opacity-70 text-white',
         primary: 'bg-gray-900 text-white hover:bg-opacity-80 shadow-sm',
         secondary: 'border border-gray-300 hover:opacity-70',
       },
